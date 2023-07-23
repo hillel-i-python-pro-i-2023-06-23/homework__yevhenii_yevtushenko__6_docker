@@ -1,6 +1,6 @@
 import asyncio
 
-from app.services.get_requests import response, async_response
+from app.services.get_requests import get_data_from_request, get_data_from_async_request
 from app.services.read_csv import read_csv_file
 from app.services.read_from_file import read_file
 from app.services.show_user import show_users
@@ -12,7 +12,5 @@ def main():
     show_users()
 
     url = "http://api.open-notify.org/astros.json"
-    response(url)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(async_response(url))
-    loop.close()
+    get_data_from_request(url)
+    asyncio.run(get_data_from_async_request(url))
